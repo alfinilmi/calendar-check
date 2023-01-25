@@ -190,7 +190,9 @@ function show_events(events, month, day) {
         // Go through and add each event as a card to the events container
         for(var i=0; i<events.length; i++) {
             var event_card = $("<div class='event-card'></div>");
-            var event_name = $("<div class='event-name heading-section h1'>"+events[i]["occasion"]+"</div>");
+            var event_name = $("<div class='event-name text-dark'>"+events[i]["occasion"]+"</div>");
+            var event_btn1 = $("<button type='button' class='btn btn-success btn-sm btn-rounded btn-icon float-right mr-1'> <i class='fa fa-check'></i>");
+            var event_btn2 = $("<button type='button' class='btn btn-danger btn-sm btn-rounded btn-icon float-right mr-1'> <i class='fa fa-times'></i>");
             // var event_count = $("<div class='event-count'>"+events[i]["invited_count"]+" Invited</div>");
             if(events[i]["cancelled"]===true) {
                 $(event_card).css({
@@ -198,7 +200,7 @@ function show_events(events, month, day) {
                 });
                 // event_count = $("<div class='event-cancelled'>Cancelled</div>");
             }
-            $(event_card).append(event_name);
+            $(event_card).append(event_name).append(event_btn1).append(event_btn2);
             $(".events-container").append(event_card);
         }
     }
